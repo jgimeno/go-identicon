@@ -33,3 +33,16 @@ func generatePatternFromHash(sum [16]byte) []byte {
 
 	return p
 }
+
+func convertPatternToBinarySwitch(pattern []byte) []byte {
+	b := make([]byte, 25)
+	for i, v := range pattern {
+		if v%2 == 0 {
+			b[i] = 1
+		} else {
+			b[i] = 0
+		}
+	}
+
+	return b
+}

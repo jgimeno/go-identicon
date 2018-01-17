@@ -15,13 +15,28 @@ var GeneratedPattern = []byte{
 	149, 108, 179, 108, 149,
 }
 
+var GeneratedBitmap = []byte{
+	0, 0, 1, 0, 0,
+	1, 0, 1, 0, 1,
+	1, 0, 0, 0, 1,
+	0, 0, 0, 0, 0,
+	0, 1, 0, 1, 0,
+}
+
 var GeneratedHash = md5.Sum([]byte("Culona"))
 
 func TestItGeneratesAPatternFromAListOfBytes(t *testing.T) {
 	pattern := generatePatternFromHash(GeneratedHash)
 
 	if !reflect.DeepEqual(GeneratedPattern, pattern) {
-		fmt.Printf("%v", pattern)
 		t.Fatal("Failing asserting equality of pattern.")
+	}
+}
+
+func TestItGeneratesABitMapFromPattern(t *testing.T) {
+	bitmap := convertPatternToBinarySwitch(GeneratedPattern)
+
+	if !reflect.DeepEqual(GeneratedBitmap, bitmap) {
+		t.Fatal("Failing asserting equality of bitmap.")
 	}
 }
