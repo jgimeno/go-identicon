@@ -2,17 +2,16 @@ package identicon
 
 import (
 	"crypto/md5"
-	"fmt"
 )
 
 type Identicon struct {
-	grid [25]byte
+	bitmap []byte
 }
 
 func Generate(key string) Identicon {
 	hash := md5.Sum([]byte(key))
-	fmt.Println(hash)
 	return Identicon{
+		convertPatternToBinarySwitch(generatePatternFromHash(hash)),
 	}
 }
 

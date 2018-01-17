@@ -4,7 +4,6 @@ import (
 	"testing"
 	"crypto/md5"
 	"reflect"
-	"fmt"
 )
 
 var GeneratedPattern = []byte{
@@ -38,5 +37,13 @@ func TestItGeneratesABitMapFromPattern(t *testing.T) {
 
 	if !reflect.DeepEqual(GeneratedBitmap, bitmap) {
 		t.Fatal("Failing asserting equality of bitmap.")
+	}
+}
+
+func TestItGeneratesAnIdenticonFromString(t *testing.T) {
+	identicon := Generate("Culona")
+
+	if (!reflect.DeepEqual(GeneratedBitmap, identicon.bitmap)) {
+		t.Fatal("Failing asserting that the identicon has a valid  bitmap.")
 	}
 }
