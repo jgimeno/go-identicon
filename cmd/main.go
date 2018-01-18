@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/jgimeno/avatarme/src"
 	"flag"
+	"github.com/jgimeno/go-identicon/src"
 )
 
 var baseString = flag.String("string", "baseString", "Base string to generate the Identicon.")
