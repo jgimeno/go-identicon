@@ -8,14 +8,14 @@ import (
 	"image/color"
 )
 
-func Render(i Identicon) {
+func Render(id Identicon) {
 	img := image.NewRGBA(image.Rect(0,0, 50, 50))
 
 	setBackgroundWhite(img)
 
-	for i, v := range i.bitmap {
+	for i, v := range id.bitmap {
 		if v == 1 {
-			drawRect(img, i)
+			drawRect(img, i, id.color)
 		}
 	}
 
@@ -27,7 +27,7 @@ func setBackgroundWhite(img *image.RGBA) {
 	draw.Draw(img, img.Bounds(), &image.Uniform{color.White}, image.ZP, draw.Src)
 }
 
-func drawRect(rgba *image.RGBA, i int) {
+func drawRect(rgba *image.RGBA, i int, c color.Color) {
 	sizeSquare := 10
 	maxRow := 5
 
@@ -38,7 +38,5 @@ func drawRect(rgba *image.RGBA, i int) {
 		(i/maxRow)*sizeSquare+sizeSquare,
 	)
 
-	green := color.RGBA{0, 100, 0, 255}
-
-	draw.Draw(rgba, r, &image.Uniform{green},  image.ZP, draw.Src)
+	draw.Draw(rgba, r, &image.Uniform{c},  image.ZP, draw.Src)
 }

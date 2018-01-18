@@ -4,6 +4,7 @@ import (
 	"testing"
 	"crypto/md5"
 	"reflect"
+	"image/color"
 )
 
 var GeneratedPattern = []byte{
@@ -45,5 +46,17 @@ func TestItGeneratesAnIdenticonFromString(t *testing.T) {
 
 	if (!reflect.DeepEqual(GeneratedBitmap, identicon.bitmap)) {
 		t.Fatal("Failing asserting that the identicon has a valid  bitmap.")
+	}
+}
+
+func TestItGeneratesAColorBasedOnHash(t *testing.T) {
+	expectedColor := color.RGBA{
+		R: 108,
+		G: 179,
+		B: 69,
+		A: 255,
+	}
+	if expectedColor != getColorFromHash(GeneratedHash) {
+		t.Fatal("Failed generating expected color.")
 	}
 }
