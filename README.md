@@ -2,7 +2,8 @@
 Run with
 
 ```
-go run cmd/main.go -string thestringyouwannaencodeinIdenticon
+go get -i github.com/jgimeno/go-identicon
+go-identicon -string thestringyouwannaencodeinIdenticon
 ```
 
 Enjoy!
