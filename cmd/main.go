@@ -2,7 +2,7 @@ package main
 
 import (
 	"flag"
-	"github.com/jgimeno/go-identicon/src"
+	"github.com/jgimeno/go-identicon/identicon"
 )
 
 var baseString = flag.String("string", "baseString", "Base string to generate the Identicon.")
